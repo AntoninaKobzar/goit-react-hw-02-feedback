@@ -10,14 +10,14 @@ class App extends Component{
     neutral: 0,
     bad: 0,
   };
-  // Метод, который берёт названия кнопок и по ним прибавляет 1 к стейту
+  
   onLeaveFeedback = event => {
     const label = event.target.textContent;
 
     this.setState(prevState => ({ [label]: (prevState[label] += 1) }));
   };
 
-  // Метод, который суммирует значения отзывов в стейте
+  
   countTotalFeedback = () => {
     const total = Object.keys(this.state).reduce(
       (acc, value) => acc + this.state[value],
@@ -27,7 +27,7 @@ class App extends Component{
     return total;
   };
 
-  // Считает процент хороших отзывов (хорошие умножаем на 100 и делим на общее количество)
+
   countPositiveFeedbackPercentage = () => {
     const percent = Math.round(
       (this.state.good * 100) / this.countTotalFeedback(),
@@ -48,8 +48,8 @@ class App extends Component{
             good={good}
             neutral={neutral}
             bad={bad}
-            total={this.countTotalFeedback} // Передаем в компонент статистики подсчет всех отзывов
-            positivePercentage={this.countPositiveFeedbackPercentage} // Туда же передаем подсчет хороших отзывов
+            total={this.countTotalFeedback} 
+            positivePercentage={this.countPositiveFeedbackPercentage} 
           /></Section>
       </>
     );
